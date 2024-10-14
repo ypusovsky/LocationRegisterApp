@@ -1,0 +1,27 @@
+h2 {
+    text-align: center;
+    width: 100%;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin-top: 50px;
+}
+
+.center-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.select-placeholder-container {
+    display: flex;
+    align-items: center;
+}

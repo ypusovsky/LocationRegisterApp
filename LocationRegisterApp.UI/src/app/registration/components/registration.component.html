@@ -1,0 +1,4 @@
+<form class="form-container" [formGroup]="this.registrationService.registrationForm">
+    <app-registration-step1 *ngIf="this.registrationService.currentStep === 1"></app-registration-step1>
+    <app-registration-step2 *ngIf="this.registrationService.currentStep === 2"></app-registration-step2>
+</form>

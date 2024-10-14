@@ -1,0 +1,17 @@
+.third-width {
+    width: 30%;
+    min-width: 1000px;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 100%;
+    margin-left: 33%;
+}
+
+.input-label {
+    width: auto;
+    margin-right: 10px;
+}

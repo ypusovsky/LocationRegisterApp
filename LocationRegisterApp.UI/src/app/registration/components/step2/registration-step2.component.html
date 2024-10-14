@@ -1,0 +1,63 @@
+<h2>Step 2</h2>
+
+<div [formGroup]="formGroup">  
+    <div class="field-container">
+        <mat-form-field appearance="fill" class="third-width">
+            <mat-label *ngIf="countiesLoading">
+                <div class="select-placeholder-container">
+                    <span>Select Country</span>
+                    <mat-spinner class="spinner" diameter="20"></mat-spinner>
+                </div>
+            </mat-label>
+            <mat-select placeholder="Select Country*" formControlName="countryId" (selectionChange)="onCountryChange($event.value)">
+                
+              <mat-option *ngFor="let country of this.registrationService.countries" [value]="country.id">
+                {{ country.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formGroup.get('countryId')?.hasError('required') && formGroup.get('countryId')?.touched">
+              Country is required.
+            </mat-error>
+          </mat-form-field>
+    </div>
+  
+     <div class="field-container">
+        <mat-form-field appearance="fill" class="third-width">
+            <mat-label *ngIf="provinciesLoading">
+                <div class="select-placeholder-container">
+                    <span>Select Province</span>
+                    <mat-spinner class="spinner" diameter="20"></mat-spinner>
+                </div>
+            </mat-label>
+            <mat-select [placeholder]="this.selectedCountryId ? 'Select Province*' : 'Select country first'" formControlName="provinceId">
+              <mat-option *ngFor="let province of this.registrationService.provinces" [value]="province.id">
+                {{ province.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formGroup.get('provinceId')?.hasError('required') && formGroup.get('provinceId')?.touched">
+              Province is required.
+            </mat-error>
+          </mat-form-field>
+     </div>
+
+     <div class="buttons-container">
+        <button 
+            mat-raised-button color="link" 
+            (click)="backToStep1()"
+            >
+                To previous step
+        </button>
+    
+        <div class="center-container">
+            <button 
+                mat-raised-button color="primary" 
+                [disabled]="this.parent.invalid"
+                (click)="this.registrationService.registerUser(this.parent.value)"
+                >
+                    Save
+            </button>
+        </div>
+    </div>    
+</div>
+
+
